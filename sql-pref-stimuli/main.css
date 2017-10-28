@@ -1,0 +1,30 @@
+body, html, #content {
+	height:100%;
+}
+
+.row {
+	height: 90%;
+}
+
+.col {
+	height: 90%;
+}
+
+#lesson {
+	height: 100%;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+#query {
+	width: 100%;
+}
+
+#results {
+	overflow-y:scroll;
+	height: 80%;
+}
+
+iframe {
+	border: solid 1px;
+}

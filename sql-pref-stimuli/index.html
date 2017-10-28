@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 <!-- Custom css-->
+<link rel="stylesheet" href="main.css">
 
 <!--- Custom JS-->
 <script src='sql.js'></script>
@@ -83,7 +81,8 @@
     var container = document.getElementById('results');
     // make an object to built the table
     var table = document.createElement('table');
-    table.className = "table table-bordered";
+    table.className = "table table-bordered table-sm table-striped";
+    var thead = document.createElement('thead');
     var tbody = document.createElement('tbody');
     // get the values from the result
     columns = result['columns'];
@@ -97,7 +96,8 @@
         header_row.appendChild(th);
       }
     );
-    tbody.appendChild(header_row);
+    thead.appendChild(header_row);
+    table.appendChild(thead);
     // add the data one row at a time
     values.forEach(
       function(row) {
@@ -124,30 +124,35 @@
 <!--- body of document -->
 <body>
 <!--- Title -->
-<div class="page-header">
+<div class="page-header container">
   <h1>SQL Preference Study</h1>
 </div>
-<div class="container">
+<div class="container" id="content">
 <div class="row">
+<!--- Lesson side -->
+<iframe id="lesson" class="col" src="instructions-1.html"></iframe>
 <!--- SQL side -->
-<div class="col-">
+<div class="col">
 
 <iframe id="db_create_statement" src="create_db.txt" onload="LoadFile();" style="display: none;">
 </iframe>
 
-<form>
-<p>Query:</p>
-<textarea width="50%" id="query"></textarea>
+<div class="container">
+Query:
 <br/>
-<button type="button" class="btn btn-primary" onclick="RunQuery();">Execute</button>
-</form>
+<textarea id="query"></textarea>
+<br/>
+<button type="button" class="btn btn-primary" onclick="RunQuery();">Run Query</button>
+</div>
 
 <div id="results" class="container">
 </div>
 
 </div>
 
+
 </div>
+
 </div>
 </body>
 </html>

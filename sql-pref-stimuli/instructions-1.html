@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 <!-- Custom css-->
+<link rel="stylesheet" href="main.css">
 
 <!--- Custom JS-->
 
@@ -29,7 +27,7 @@
 </div>
 
 <p>
-For this section we will use the participant table in the SQL interpreter as an example. The data in this table is based on the Milgram Obedience Experiment. In this experiment, each participant was told to administer a shock to motivate another participant to answer questions correctly. The other participant was actually an actor pretending to be shocked, and the goal of the experiment was to test whether participants would obey the experimenter and administer the maximum shock of 450 volts. In one condition, the experimenter wore a lab coat, so participants perceived them as an authority figure. In another condition, the lab coat wearing “experimenter” was called away and replaced by someone wearing ordinary clothes, whom the participants would perceive as having less authority.
+For this section we will use the participant table in the SQL interpreter as an example. The data in this table is based on the Milgram Obedience Experiment. In this experiment, each participant was told to administer a shock to motivate another participant to answer questions correctly. The other participant was actually an actor pretending to be shocked, and the goal of the experiment was to test whether participants would obey the experimenter and administer the maximum shock of 450 volts. In one condition, the experimenter wore a lab coat, so participants perceived them as an authority figure. In another condition, the lab coat wearing "experimenter" was called away and replaced by someone wearing ordinary clothes, whom the participants would perceive as having less authority.
 </p>
 
 <p>
@@ -40,7 +38,7 @@ Each participant corresponds to a row in the participant table and has attribute
 Here are the first few rows of the participants table
 </p>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-sm table-striped">
 	<tbody>
 		<tr>
 			<th>id</th>
@@ -76,7 +74,7 @@ SELECT id FROM participants;
 </p>
 
 <p>
-Hit enter when you are done typing. You should see a list of 40 ids ranging from 1 to 40. If you got an error message which says “no table named X” it is either because you miss typed participants or you incorrectly capitalized the table name.
+Hit enter when you are done typing. You should see a list of 40 ids ranging from 1 to 40. If you got an error message which says "no table named X" it is either because you miss typed participants or you incorrectly capitalized the table name.
 </p>
 
 <p>
@@ -132,6 +130,12 @@ SELECT AVG(maximum_shock) FROM participants;
 <p>
 In the next section we will discuss how to select a subset of the data.
 </p>
+
+<div class="container">
+	<a href="instructions-2.html">
+		<button class="btn btn-success">Next Section</button>
+	</a>
+</div>
 
 </div>
 </body>
