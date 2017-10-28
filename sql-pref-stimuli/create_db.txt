@@ -1,0 +1,46 @@
+DROP TABLE IF EXISTS participants;
+CREATE TABLE participants( id            integer,
+                           maximum_shock integer,
+                           age           integer,
+                           experimenter  text);
+
+INSERT INTO participants VALUES (20,450,30,'Lab Coat');
+INSERT INTO participants VALUES (22,345,38,'Ordinary Clothes');
+INSERT INTO participants VALUES (36,450,23,'Lab Coat');
+INSERT INTO participants VALUES (31,450,47,'Ordinary Clothes');
+INSERT INTO participants VALUES (21,315,21,'Ordinary Clothes');
+INSERT INTO participants VALUES (18,330,36,'Ordinary Clothes');
+INSERT INTO participants VALUES (2,420,21,'Ordinary Clothes');
+INSERT INTO participants VALUES (17,330,31,'Lab Coat');
+INSERT INTO participants VALUES (3,360,26,'Lab Coat');
+INSERT INTO participants VALUES (23,375,29,'Ordinary Clothes');
+INSERT INTO participants VALUES (34,420,27,'Ordinary Clothes');
+INSERT INTO participants VALUES (30,435,36,'Lab Coat');
+INSERT INTO participants VALUES (29,450,23,'Lab Coat');
+INSERT INTO participants VALUES (6,420,41,'Ordinary Clothes');
+INSERT INTO participants VALUES (16,390,26,'Lab Coat');
+INSERT INTO participants VALUES (19,330,43,'Lab Coat');
+INSERT INTO participants VALUES (24,450,31,'Lab Coat');
+INSERT INTO participants VALUES (33,315,27,'Ordinary Clothes');
+INSERT INTO participants VALUES (4,450,30,'Lab Coat');
+INSERT INTO participants VALUES (8,300,22,'Ordinary Clothes');
+INSERT INTO participants VALUES (7,315,49,'Ordinary Clothes');
+INSERT INTO participants VALUES (25,360,33,'Ordinary Clothes');
+INSERT INTO participants VALUES (35,450,26,'Lab Coat');
+INSERT INTO participants VALUES (1,450,29,'Lab Coat');
+INSERT INTO participants VALUES (12,450,21,'Ordinary Clothes');
+INSERT INTO participants VALUES (11,345,33,'Ordinary Clothes');
+INSERT INTO participants VALUES (10,405,26,'Ordinary Clothes');
+INSERT INTO participants VALUES (26,345,23,'Ordinary Clothes');
+INSERT INTO participants VALUES (5,435,45,'Lab Coat');
+INSERT INTO participants VALUES (40,450,47,'Lab Coat');
+INSERT INTO participants VALUES (13,450,46,'Lab Coat');
+INSERT INTO participants VALUES (9,450,39,'Lab Coat');
+INSERT INTO participants VALUES (37,360,33,'Ordinary Clothes');
+INSERT INTO participants VALUES (15,450,38,'Lab Coat');
+INSERT INTO participants VALUES (14,405,39,'Lab Coat');
+INSERT INTO participants VALUES (27,450,34,'Ordinary Clothes');
+INSERT INTO participants VALUES (32,450,36,'Ordinary Clothes');
+INSERT INTO participants VALUES (39,450,25,'Lab Coat');
+INSERT INTO participants VALUES (28,435,45,'Ordinary Clothes');
+INSERT INTO participants VALUES (38,450,49,'Lab Coat');

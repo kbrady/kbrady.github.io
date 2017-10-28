@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+<!-- Custom css-->
+
+<!--- Custom JS-->
+
+<!--- Viewport stuff -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<!--- body of document -->
+<body>
+<div class="container-fluid">
+<!--- Title -->
+<div class="page-header">
+  <h2>Basic Select Statement</h2>
+</div>
+
+<p>
+For this section we will use the participant table in the SQL interpreter as an example. The data in this table is based on the Milgram Obedience Experiment. In this experiment, each participant was told to administer a shock to motivate another participant to answer questions correctly. The other participant was actually an actor pretending to be shocked, and the goal of the experiment was to test whether participants would obey the experimenter and administer the maximum shock of 450 volts. In one condition, the experimenter wore a lab coat, so participants perceived them as an authority figure. In another condition, the lab coat wearing “experimenter” was called away and replaced by someone wearing ordinary clothes, whom the participants would perceive as having less authority.
+</p>
+
+<p>
+Each participant corresponds to a row in the participant table and has attributes id, maximum_shock, age and experimenter. id is the number used to identify each participant in the study. maximum_shock is the maximum number of volts the participant thought they were administering to the actor during the study. age is the age of the participant when the study was conducted. experimenter tells us whether the participant was in the condition with a lab coat wearing experimenter or the ordinary clothes wearing experimenter.
+</p>
+
+<p>
+Here are the first few rows of the participants table
+</p>
+
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th>id</th>
+			<th>maximum_shock</th>
+			<th>age</th>
+			<th>experimenter</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>450</td>
+			<td>29</td>
+			<td>Lab Coat</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>420</td>
+			<td>21</td>
+			<td>Ordinary Clothes</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>360</td>
+			<td>26</td>
+			<td>Lab Coat</td>
+		</tr>
+	</tbody>
+</table>
+</p>
+
+<p>
+The first thing we will do in SQL is look at all the participant ids to see how many data points we have. In the SQL interpreter type:
+SELECT id FROM participants;
+</p>
+
+<p>
+Hit enter when you are done typing. You should see a list of 40 ids ranging from 1 to 40. If you got an error message which says “no table named X” it is either because you miss typed participants or you incorrectly capitalized the table name.
+</p>
+
+<p>
+Now let us break down what is going on in the code you just typed. The first word SELECT tells SQL that you want it to give you some values. In addition to selecting data, SQL allows users to insert information into the table, delete information from the table and create and delete entire tables. This tutorial is focused on viewing data which is in the database, so we won’t worry about those other commands.
+</p>
+
+<p>
+The second part of the phrase, id, tells SQL what column in the table you want to select. In this case we wanted to view only the participant ID column.
+</p>
+
+<p>
+The third word, FROM, tells SQL that we are done listing columns to select and now want to tell it which table we are selecting these columns from.
+</p>
+
+<p>
+The final word in our statement, participant, is the name of the table we would like to select from.
+</p>
+
+<p>
+The semicolon at the end of the statement is very important. If you run the statement without it, you will get a prompt to enter more information.
+</p>
+
+<p>
+Now that we know how to select one column, let us write a statement to select more than one. We can do this by listing the columns we want with commas between each column name. For instance if we would like to get the maximum shock that each participant gave in addition to their id, we can do this by running:
+SELECT id, maximum_shock FROM participants;
+</p>
+
+<p>
+The order of the list determines the order of the columns in the output. Thus if we want the maximum shock to be the first column in the table and id to be the second column, we use the command:
+SELECT maximum_shock, id FROM participants;
+</p>
+
+<p>
+There are a few aggregation functions built into the SQL framework for calculating statistics on fields in the database. For instance, if we want to know the highest maximum shock that any participant administered, we can run the following command:
+SELECT MAX(maximum_shock) FROM participants;
+</p>
+
+<p>
+If we would like to know the minimum maximum shock, we can run the command:
+SELECT MIN(maximum_shock) FROM participants;
+When using aggregation functions, we must give instructions on how to aggregate every column which is selected. Otherwise, SQL will randomly choose a value from the column. As an example, compare the outputs of the following commands:
+SELECT MIN(maximum_shock), id FROM participants;
+SELECT MIN(maximum_shock), MIN(id) FROM participants;
+SELECT MIN(maximum_shock), MAX(id) FROM participants;
+</p>
+
+<p>
+Other functions you might find useful are COUNT, which counts the number of rows in the results and AVG which gives the average value of a column. You can try these out by running:
+SELECT COUNT(maximum_shock) FROM participants;
+SELECT AVG(maximum_shock) FROM participants;
+</p>
+
+<p>
+In the next section we will discuss how to select a subset of the data.
+</p>
+
+</div>
+</body>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+<!-- Custom css-->
+
+<!--- Custom JS-->
+<script src='sql.js'></script>
+<script>
+  //Create the database
+  var db = new SQL.Database();
+
+  function LoadFile() {
+    // get the create statement
+    var dataFrame = document.getElementById("db_create_statement");
+    var create_statement = dataFrame.contentWindow.document.body.childNodes[0].innerHTML;
+    //console.log(create_statement);
+    // Run a query without reading the results
+    db.run(create_statement);
+  }
+
+  function RunQuery() {
+    // get query
+    var query = document.getElementById('query').value;
+    // clear previous results
+    var container = document.getElementById('results');
+    for (i=0; i < container.childNodes.length; i++) {
+      container.removeChild(container.childNodes[i]);
+    }
+    // return results
+    try {
+      var results = db.exec(query);
+      console.log(results);
+      results.forEach(buildTable);
+    } catch (e) {
+      showWarning(e);
+    }
+  }
+
+  function showWarning(error) {
+    var err_text = improveMessage(error.message);
+    // get the element we will put the results in
+    var container = document.getElementById('results');
+    // make an object to put the error message in
+    var div = document.createElement('div');
+    div.className = "alert alert-warning"
+    div.appendChild(document.createTextNode(err_text));
+    container.appendChild(div);
+  }
+
+  function improveMessage(err_text) {
+    if (err_text.indexOf(": syntax error") != -1) {
+      var query = err_text.substring("near ".length, err_text.indexOf(": syntax error"));
+      return "There is an error in your SQL query near " + query + ".";
+    }
+    if (err_text.indexOf("no such table: ") != -1) {
+      var table_name = err_text.substring("no such table: ".length, err_text.length);
+      return "You have mistyped the name of the table as '" + table_name + "'. It should be 'participants'";
+    }
+    if (err_text.indexOf("no such column: ") != -1) {
+      var col_name = err_text.substring("no such column: ".length, err_text.length);
+      return "You have mistyped a column name as '" + col_name + "'. Did you mean id, maximum_shock, age or experimenter?";
+    }
+    if (err_text.indexOf("no such function: ") != -1) {
+      var fun_name = err_text.substring("no such function: ".length, err_text.length);
+      return fun_name + " is not a valid SQL aggregation function. Did you mean COUNT, MAX, MIN or AVG?";
+    }
+    return err_text;
+  }
+
+  function buildTable(result) {
+    // get the element we will put the results in
+    var container = document.getElementById('results');
+    // make an object to built the table
+    var table = document.createElement('table');
+    table.className = "table table-bordered";
+    var tbody = document.createElement('tbody');
+    // get the values from the result
+    columns = result['columns'];
+    values = result['values'];
+    // add the columns to the table
+    var header_row = document.createElement('tr');
+    columns.forEach(
+      function(c) {
+        var th = document.createElement('th');
+        th.appendChild(document.createTextNode(c));
+        header_row.appendChild(th);
+      }
+    );
+    tbody.appendChild(header_row);
+    // add the data one row at a time
+    values.forEach(
+      function(row) {
+        var tr = document.createElement('tr');
+        row.forEach(
+          function(v) {
+            var td = document.createElement('td');
+            td.appendChild(document.createTextNode(v));
+            tr.appendChild(td);
+          }
+        );
+        tbody.appendChild(tr);
+      }
+    );
+    table.appendChild(tbody);
+    container.appendChild(table);
+  }
+</script>
+
+<!--- Viewport stuff -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<!--- body of document -->
+<body>
+<!--- Title -->
+<div class="page-header">
+  <h1>SQL Preference Study</h1>
+</div>
+<div class="container">
+<div class="row">
+<!--- SQL side -->
+<div class="col-">
+
+<iframe id="db_create_statement" src="create_db.txt" onload="LoadFile();" style="display: none;">
+</iframe>
+
+<form>
+<p>Query:</p>
+<textarea width="50%" id="query"></textarea>
+<br/>
+<button type="button" class="btn btn-primary" onclick="RunQuery();">Execute</button>
+</form>
+
+<div id="results" class="container">
+</div>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>
