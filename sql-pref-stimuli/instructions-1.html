@@ -39,29 +39,31 @@ Here are the first few rows of the participants table
 </p>
 
 <table class="table table-bordered table-sm table-striped">
-	<tbody>
+	<thead>
 		<tr>
 			<th>id</th>
 			<th>maximum_shock</th>
 			<th>age</th>
 			<th>experimenter</th>
 		</tr>
+	</thead>
+	<tbody>
 		<tr>
-			<td>1</td>
+			<td>20</td>
 			<td>450</td>
-			<td>29</td>
+			<td>30</td>
 			<td>Lab Coat</td>
 		</tr>
 		<tr>
-			<td>2</td>
-			<td>420</td>
-			<td>21</td>
+			<td>22</td>
+			<td>345</td>
+			<td>38</td>
 			<td>Ordinary Clothes</td>
 		</tr>
 		<tr>
-			<td>3</td>
-			<td>360</td>
-			<td>26</td>
+			<td>36</td>
+			<td>450</td>
+			<td>23</td>
 			<td>Lab Coat</td>
 		</tr>
 	</tbody>
@@ -70,15 +72,15 @@ Here are the first few rows of the participants table
 
 <p>
 The first thing we will do in SQL is look at all the participant ids to see how many data points we have. In the SQL interpreter type:
-SELECT id FROM participants;
+<br/><code>SELECT id FROM participants;</code>
 </p>
 
 <p>
-Hit enter when you are done typing. You should see a list of 40 ids ranging from 1 to 40. If you got an error message which says "no table named X" it is either because you miss typed participants or you incorrectly capitalized the table name.
+Hit 'Run Command' when you are done typing. You should see a list of 40 ids ranging from 1 to 40. If you got an error message which says "no table named X" it is either because you miss typed participants or you incorrectly capitalized the table name.
 </p>
 
 <p>
-Now let us break down what is going on in the code you just typed. The first word SELECT tells SQL that you want it to give you some values. In addition to selecting data, SQL allows users to insert information into the table, delete information from the table and create and delete entire tables. This tutorial is focused on viewing data which is in the database, so we won’t worry about those other commands.
+Now let us break down what is going on in the code you just typed. The first word SELECT tells SQL that you want it to give you some values. In addition to selecting data, SQL allows users to insert information into the table, delete information from the table and create and delete entire tables. This tutorial is focused on viewing data which is in the database, so we won't worry about those other commands.
 </p>
 
 <p>
@@ -99,32 +101,35 @@ The semicolon at the end of the statement is very important. If you run the stat
 
 <p>
 Now that we know how to select one column, let us write a statement to select more than one. We can do this by listing the columns we want with commas between each column name. For instance if we would like to get the maximum shock that each participant gave in addition to their id, we can do this by running:
-SELECT id, maximum_shock FROM participants;
+<br/><code>SELECT id, maximum_shock FROM participants;</code>
 </p>
 
 <p>
 The order of the list determines the order of the columns in the output. Thus if we want the maximum shock to be the first column in the table and id to be the second column, we use the command:
-SELECT maximum_shock, id FROM participants;
+<br/><code>SELECT maximum_shock, id FROM participants;</code>
 </p>
 
 <p>
 There are a few aggregation functions built into the SQL framework for calculating statistics on fields in the database. For instance, if we want to know the highest maximum shock that any participant administered, we can run the following command:
-SELECT MAX(maximum_shock) FROM participants;
+<br/><code>SELECT MAX(maximum_shock) FROM participants;</code>
 </p>
 
 <p>
 If we would like to know the minimum maximum shock, we can run the command:
-SELECT MIN(maximum_shock) FROM participants;
+<br/><code>SELECT MIN(maximum_shock) FROM participants;</code>
+</p>
+
+<p>
 When using aggregation functions, we must give instructions on how to aggregate every column which is selected. Otherwise, SQL will randomly choose a value from the column. As an example, compare the outputs of the following commands:
-SELECT MIN(maximum_shock), id FROM participants;
-SELECT MIN(maximum_shock), MIN(id) FROM participants;
-SELECT MIN(maximum_shock), MAX(id) FROM participants;
+<br/><code>SELECT MIN(maximum_shock), id FROM participants;</code>
+<br/><code>SELECT MIN(maximum_shock), MIN(id) FROM participants;</code>
+<br/><code>SELECT MIN(maximum_shock), MAX(id) FROM participants;</code>
 </p>
 
 <p>
 Other functions you might find useful are COUNT, which counts the number of rows in the results and AVG which gives the average value of a column. You can try these out by running:
-SELECT COUNT(maximum_shock) FROM participants;
-SELECT AVG(maximum_shock) FROM participants;
+<br/><code>SELECT COUNT(maximum_shock) FROM participants;</code>
+<br/><code>SELECT AVG(maximum_shock) FROM participants;</code>
 </p>
 
 <p>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+<!-- Custom css-->
+<link rel="stylesheet" href="main.css">
+
+<!--- Custom JS-->
+
+<!--- Viewport stuff -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<!--- body of document -->
+<body>
+<div class="container-fluid">
+<!--- Title -->
+<div class="page-header">
+  <h2>Combining Statements</h2>
+</div>
+
+<p>
+The main question of the Milgram Experiment was how many participants will administer the maximum shock. We know from the previous section on the basic select statement that the maximum shock was 450 volts. To see how many participants administered this shock we can use the command:
+<code>SELECT COUNT(id) FROM participants WHERE maximum_shock = 450;</code>
+</p>
+
+<p>
+This statement just puts together the two previous sections into a single statement. We see that of the 40 participants 17 or 42% administered the maximum shock. Now suppose we want to know whether participants in the age range 35-45 administered the maximum shock more often. To find this out we just need to change the WHERE clause to add this condition. Recall that the condition to get this range is (age >= 35 AND age <= 45). Since we want to know how many people administered the maximum shock AND were in the age range, we use the AND operator to add it to our command:
+<code>SELECT COUNT(id) FROM participants WHERE maximum_shock = 450 AND (age >= 35 AND age <= 45);</code>
+</p>
+
+<p>
+Now suppose we want to know the minimum shock that was administered by anyone in this age group, we can do this by using another one of the aggregation functions we learned about in the Basic Select section, in this case the MIN function. We no longer want to have the maximum shock as part of our condition, so we will take that part out of the WHERE clause and end up with the command:
+<code>SELECT MIN(maximum_shock) FROM participants WHERE (age >= 35 AND age <= 45);</code>
+</p>
+
+<p>
+Note that we are switched out id for maximum_shock as the column in the MIN function since we want to take the minimum
+</p>
+
+</div>
+</body>
+</html>

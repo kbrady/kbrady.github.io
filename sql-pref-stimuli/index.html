@@ -22,9 +22,13 @@
     // get the create statement
     var dataFrame = document.getElementById("db_create_statement");
     var create_statement = dataFrame.contentWindow.document.body.childNodes[0].innerHTML;
-    //console.log(create_statement);
     // Run a query without reading the results
     db.run(create_statement);
+  }
+
+  function QueryException(message) {
+    this.message = message;
+    this.name = 'QueryException';
   }
 
   function RunQuery() {
@@ -37,8 +41,11 @@
     }
     // return results
     try {
+      query = query.trim()
+      if (query[query.length-1] != ';') {
+        throw new QueryException('You need to end your command with a semicolon (;) so the computer knows it is over.');
+      }
       var results = db.exec(query);
-      console.log(results);
       results.forEach(buildTable);
     } catch (e) {
       showWarning(e);
@@ -138,11 +145,14 @@
 </iframe>
 
 <div class="container">
-Query:
+<div class="page-header">
+  <h2>SQL Interpreter</h2>
+</div>
+Command:
 <br/>
 <textarea id="query"></textarea>
 <br/>
-<button type="button" class="btn btn-primary" onclick="RunQuery();">Run Query</button>
+<button type="button" class="btn btn-primary" onclick="RunQuery();">Run Command</button>
 </div>
 
 <div id="results" class="container">
