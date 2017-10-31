@@ -32,64 +32,106 @@ The first thing we will do in SQL is look at all the participant ids to see how 
 </p>
 
 <p>
-Hit 'Run Command' when you are done typing. You should see a list of 40 ids ranging from 1 to 40. If you got an error message which says "no table named X" it is either because you miss typed participants or you incorrectly capitalized the table name.
+Hit <b>Run Command</b> when you are done typing.
 </p>
 
 <p>
-Now let us break down what is going on in the code you just typed. The first word SELECT tells SQL that you want it to give you some values. In addition to selecting data, SQL allows users to insert information into the table, delete information from the table and create and delete entire tables. This tutorial is focused on viewing data which is in the database, so we won't worry about those other commands.
+	You should see a list of 40 ids which looks like this in the beginning:
+</p>
+
+<table class="table table-bordered table-sm table-striped">
+	<thead>
+		<tr><th>id</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>20</td></tr>
+		<tr><td>22</td></tr>
+		<tr><td>36</td></tr>
+		<tr><td>31</td></tr>
+	</tbody>
+</table>
+
+<p>
+	If you get a yellow warning message instead, it is because you have a typo in your command. The message should have specific instructions on how to fix the command so that it runs.
 </p>
 
 <p>
-The second part of the phrase, id, tells SQL what column in the table you want to select. In this case we wanted to view only the participant ID column.
+	Now let us break down what is going on in the command you just ran. The first word <code>SELECT</code> tells SQL that you want it to give you some values. In addition to selecting data, SQL allows users to insert information into the table, delete information from the table and create and delete entire tables. This tutorial is focused on viewing data which is in the database, so we won't worry about those other commands.
 </p>
 
 <p>
-The third word, FROM, tells SQL that we are done listing columns to select and now want to tell it which table we are selecting these columns from.
+	The second part of the phrase, <code>id</code>, tells SQL what column in the table you want to select. In this case we wanted to view only the participant ID column.
 </p>
 
 <p>
-The final word in our statement, participant, is the name of the table we would like to select from.
+	The third word, <code>FROM</code>, tells SQL that we are done listing columns to select and now want to tell it which table we are selecting these columns from.
 </p>
 
 <p>
-The semicolon at the end of the statement is very important. If you run the statement without it, you will get a prompt to enter more information.
+	The final word in our statement, <code>participants</code>, is the name of the table we would like to select from.
 </p>
 
 <p>
-Now that we know how to select one column, let us write a statement to select more than one. We can do this by listing the columns we want with commas between each column name. For instance if we would like to get the maximum shock that each participant gave in addition to their id, we can do this by running:
-<br/><code>SELECT id, maximum_shock FROM participants;</code>
+	The semicolon at the end of the statement is very important. If you run the statement without it, you will get a message telling you to add it so the computer knows you the command is finished. Longer SQL commands can take up multiple lines, and the interpreter accepts the enter key as a method of telling it to run a command in addition to hitting the <b>Run Command</b> button. You can see this in action by typing the same command you just did, but giving each word it's own line like this:<br/>
+	<code>SELECT<br/>id<br/>FROM<br/>participants;</code>
 </p>
 
 <p>
-The order of the list determines the order of the columns in the output. Thus if we want the maximum shock to be the first column in the table and id to be the second column, we use the command:
-<br/><code>SELECT maximum_shock, id FROM participants;</code>
+	When you are done typing, try hitting the <b>enter</b> key instead of clicking <b>Run Command</b>. You will find that even though you hit enter while writing the command, it is not until the computer sees a semicolon at the end of the line that it knows you are done typing and runs the command.
 </p>
 
 <p>
-There are a few aggregation functions built into the SQL framework for calculating statistics on fields in the database. For instance, if we want to know the highest maximum shock that any participant administered, we can run the following command:
-<br/><code>SELECT MAX(maximum_shock) FROM participants;</code>
+	Now that we know how to select one column, let us write a statement to select more than one. We can do this by listing the columns we want with commas between each column name. For instance if we would like to get all four columns instead of just paricipant ids, we can do this by running:
+	<br/><code>SELECT id, maximum_shock, age, experimenter FROM participants;</code>
 </p>
 
 <p>
-If we would like to know the minimum maximum shock, we can run the command:
-<br/><code>SELECT MIN(maximum_shock) FROM participants;</code>
+	The order of the list determines the order of the columns in the output. Thus if we want the columns in reversed order, we use the command:
+	<br/><code>SELECT experimenter, age, maximum_shock, id FROM participants;</code>
 </p>
 
 <p>
-When using aggregation functions, we must give instructions on how to aggregate every column which is selected. Otherwise, SQL will randomly choose a value from the column. As an example, compare the outputs of the following commands:
-<br/><code>SELECT MIN(maximum_shock), id FROM participants;</code>
-<br/><code>SELECT MIN(maximum_shock), MIN(id) FROM participants;</code>
-<br/><code>SELECT MIN(maximum_shock), MAX(id) FROM participants;</code>
+	There are a few aggregation functions built into the SQL framework for calculating statistics on attributes. For instance, if we want to know the smallest number of volts that a participant ended the experiment on, we can run the following command:
+	<br/><code>SELECT MIN(maximum_shock) FROM participants;</code>
 </p>
 
 <p>
-Other functions you might find useful are COUNT, which counts the number of rows in the results and AVG which gives the average value of a column. You can try these out by running:
-<br/><code>SELECT COUNT(maximum_shock) FROM participants;</code>
-<br/><code>SELECT AVG(maximum_shock) FROM participants;</code>
+	The result should be a single row like this:
+</p>
+
+<table class="table table-bordered table-sm table-striped"><thead><tr><th>min(maximum_shock)</th></tr></thead><tbody><tr><td>300</td></tr></tbody></table>
+
+<p>
+	SQL knows that we are trying to run an aggregation function called <code>MIN</code> over the column <code>maximum_shock</code> since after writing <code>MIN</code> we put parentheses around the column name <code>maximum_shock</code>. If we don't include the parentheses it will try to interpret <code>MIN</code> as a column name or simply get confused if you only use one parenthesis. You can try this out in the interpreter to see the error messages which will be generated.
 </p>
 
 <p>
-In the next section we will discuss how to select a subset of the data.
+	If we would like to know the largest maximum shock, we can run the command:
+	<br/><code>SELECT MAX(maximum_shock) FROM participants;</code>
+</p>
+
+<p>
+	This should return 450 volts as expected.
+</p>
+
+<p>
+	When using aggregation functions, we must be careful to remember that each column is being aggregated separately. As an example, compare the outputs of the following commands:
+	<br/><code>SELECT MIN(maximum_shock), MIN(id) FROM participants;</code>
+	<br/><code>SELECT MIN(maximum_shock), MAX(id) FROM participants;</code>
+</p>
+
+<p>
+	The participants with ids 1 and 40 both administered a shock of 450 volts during the experiment. You can verify this for yourself by running the command to select all the data again. When we selected the minimum value for <code>maximum_shock</code>, the computer is calculating the minimum across the whole table, not just the rows whose <code>id</code> is equal to the minimum id. Similarly, when we selected the minimum <code>id</code>, the computer calculated that over the whole table, not just the rows where <code>maximum_shock</code> is equal to 300.
+</p>
+
+<p>
+	Other functions you might find useful are <code>COUNT</code>, which counts the number of rows in the results and <code>AVG</code> which gives the average value of a column. You can try these out by running:
+	<br/><code>SELECT COUNT(maximum_shock) FROM participants;</code>
+	<br/><code>SELECT AVG(maximum_shock) FROM participants;</code>
+</p>
+
+<p>
+	We will use <code>COUNT</code> later in this lesson to answer some questions about the data. In the next section we will discuss how to select a subset of the data.
 </p>
 
 <div class="container">
