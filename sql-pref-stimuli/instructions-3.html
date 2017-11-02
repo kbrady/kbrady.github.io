@@ -27,22 +27,47 @@
 </div>
 
 <p>
-The main question of the Milgram Experiment was how many participants will administer the maximum shock. We know from the previous section on the basic select statement that the maximum shock was 450 volts. To see how many participants administered this shock we can use the command:
-<code>SELECT COUNT(id) FROM participants WHERE maximum_shock = 450;</code>
+	The main question of the Milgram Experiment was how many participants will administer the maximum shock. We know from the previous section on the basic select statement that the maximum shock was 450 volts. To see how many participants administered this shock we can use the command:
+	<br/>
+	<code>SELECT COUNT(id) FROM participants WHERE maximum_shock = 450;</code>
 </p>
 
 <p>
-This statement just puts together the two previous sections into a single statement. We see that of the 40 participants 17 or 42% administered the maximum shock. Now suppose we want to know whether participants in the age range 35-45 administered the maximum shock more often. To find this out we just need to change the WHERE clause to add this condition. Recall that the condition to get this range is (age >= 35 AND age <= 45). Since we want to know how many people administered the maximum shock AND were in the age range, we use the AND operator to add it to our command:
-<code>SELECT COUNT(id) FROM participants WHERE maximum_shock = 450 AND (age >= 35 AND age <= 45);</code>
+	This statement just puts together the two previous sections into a single statement. We see that of the 40 participants 17 or 42% administered the maximum shock.
 </p>
 
 <p>
-Now suppose we want to know the minimum shock that was administered by anyone in this age group, we can do this by using another one of the aggregation functions we learned about in the Basic Select section, in this case the MIN function. We no longer want to have the maximum shock as part of our condition, so we will take that part out of the WHERE clause and end up with the command:
-<code>SELECT MIN(maximum_shock) FROM participants WHERE (age >= 35 AND age <= 45);</code>
+	Now suppose we want to know how many participants who were in the lab coat condition administered the maximum shock. Recall that the condition to get participants whose experimenter wore a lab coat is <code>experimenter = "Lab Coat"</code>. Since we want to know how many people administered the maximum shock <b>AND</b> were in the lab coat condition, we use the <code>AND</code> operator to add it to our command:
+	<br/>
+	<code>SELECT COUNT(id) FROM participants WHERE maximum_shock = 450 AND experimenter = "Lab Coat";</code>
 </p>
 
 <p>
-Note that we are switched out id for maximum_shock as the column in the MIN function since we want to take the minimum
+	What we really want to know is whether participants in the lab coat condition were more likely to administer the maximum shock than participants in the overall sample group. To figure this out we need to know how many people are in the lab coat condition. This is done by simply removing the maximum shock part from the where clause so we can get a count of everyone in the lab coat condition:
+	<br/>
+	<code>SELECT COUNT(id) FROM participants WHERE experimenter = "Lab Coat";</code>
+</p>
+
+<p>
+	These results tell us that there were 20 people in the lab coat condition and 13 or 65% of them administered the maximum shock.
+</p>
+
+<p>
+	Another way to look at the different shock levels which were administered by participants in each condition is to take the average of the maximum shocks administered by the participants. To get this information we just switch out <code>COUNT</code> for <code>AVG</code>:
+	<br/>
+	<code>SELECT AVG(maximum_shock) FROM participants WHERE experimenter = "Lab Coat";</code>
+	<br/>
+	<code>SELECT AVG(maximum_shock) FROM participants WHERE experimenter = "Ordinary Clothes";</code>
+</p>
+
+<p>
+	Now suppose we want to know the minimum shock that was administered by anyone in this age group, we can do this by using another one of the aggregation functions we learned about in the Select section, in this case the <code>MIN</code> function. We no longer want to have the maximum shock as part of our condition, so we will take that part out of the WHERE clause and end up with the command:
+	<br/>
+	<code>SELECT MIN(maximum_shock) FROM participants WHERE experimenter = "Lab Coat";</code>
+</p>
+
+<p>
+	Note that we switched out <code>id</code> for <code>maximum_shock</code> as the column in the <code>MIN</code> function since we want to take the minimum of the maximum shock not the participant id.
 </p>
 
 </div>
