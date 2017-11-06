@@ -1,4 +1,8 @@
-# Tips for Learning on the Internet
+---
+layout: post
+title: "Tips for Learning on the Internet"
+date: 2017-10-21
+---
 
 In the fall of 2015, the [Pew Research Center](http://www.pewinternet.org/2016/03/22/lifelong-learning-and-technology/) asked 2,752 Americans if they considered themselves “lifelong learners”. Seventy-three percent answered in the affirmative, however most had never heard of distance learning, Khan academy, or massive open online courses. If you are in that majority, distance learning refers to courses in which the students and teachers are not physically in the same place and therefore communicate through forums, websites and video calls, Kahn academy is a free website which offers a game-like interface for learning everything you might encounter in grade school, and massive open online courses are free websites which host video lectures, readings and homework assignments and are usually based on a university course. The Pew Survey did not ask participants if they were aware that as of 2014, [95%](https://gizmodo.com/95-percent-of-american-public-libraries-now-carry-ebook-1663882055) of public libraries allow members to check out ebooks, so you can check out a book on the history of France from your local public library when you are in France.
 
