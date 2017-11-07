@@ -1,4 +1,3 @@
-name: Kate Brady
-markdown: kramdown
+theme: jekyll-theme-Minimal
 
 permalink: /blog/:year/:month/:day/:title
