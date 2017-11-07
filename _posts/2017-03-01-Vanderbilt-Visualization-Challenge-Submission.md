@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-# Vanderbilt Visualization Challenge Submission
+**A Year of Events at Vanderbilt**: a visualization of 9,619 events which took place between January 1, 2016 and May 31, 2017 at Vanderbilt University.
 
 <div id="accordion" role="tablist" aria-multiselectable="true">
 	<div class="card">

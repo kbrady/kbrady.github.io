@@ -1,13 +1,8 @@
-<ul>
-{% for post in site.posts %}
-	<li>
-		<time class="time">
-			{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
-			{{ post.date | date: date_format }}
-		</time>
-		<h2>
-			<a class="link" href="{{ post.url | relative_url }}" role="link">{{ post.title | escape }}</a>
-		</h2>
-	</li>
-{% endfor %}
-</ul>
+---
+#
+# You don't need to edit this file, it's empty on purpose.
+# Edit minima's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+#
+layout: home
+---
