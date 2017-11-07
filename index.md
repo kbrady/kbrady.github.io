@@ -1,5 +1,3 @@
-I am a graduate student at Vanderbilt University studying how electronic tools can be used in education.
-
 <ul>
 {% for post in site.posts %}
 	<li>
