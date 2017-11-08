@@ -121,3 +121,11 @@ function buildTable(result) {
   table.appendChild(tbody);
   container.appendChild(table);
 }
+
+// make the quiz form half the width of the screen
+function setFormDim() {
+  // get the iframe
+  var quiz = document.getElementById("quiz");
+  quiz.width = (screen.width * .42);
+  quiz.height = (screen.height - 48);
+}

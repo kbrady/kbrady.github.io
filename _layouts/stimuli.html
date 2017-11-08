@@ -10,11 +10,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 <!-- Custom css-->
-<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="/sql-pref-stimuli/main.css">
 
 <!--- Custom JS-->
-<script src='sql.js'></script>
-<script src="main.js"></script>
+<script src='/sql-pref-stimuli/sql.js'></script>
+<script src="/sql-pref-stimuli/main.js"></script>
 
 <!--- Viewport stuff -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,15 +26,20 @@
 <div class="page-header container">
   <h1>SQL Preference Study</h1>
 </div>
+
+<!--- load database comand -->
+<iframe id="db_create_statement" src="/sql-pref-stimuli/create_db.txt" onload="LoadFile();" style="display: none;">
+</iframe>
+
 <div class="container-fluid" id="content">
 <div class="row">
 <!--- Lesson side -->
-<iframe id="lesson" class="col" src="instructions-0.html"></iframe>
+<div id="lesson" class="col">
+	{{content}}
+</div>
+
 <!--- SQL side -->
 <div class="col">
-
-<iframe id="db_create_statement" src="create_db.txt" onload="LoadFile();" style="display: none;">
-</iframe>
 
 <div class="container">
 <div class="page-header">

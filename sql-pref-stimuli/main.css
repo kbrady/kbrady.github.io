@@ -1,19 +1,14 @@
 body, html, #content {
 	height:100%;
+	overflow: hidden;
 }
 
 .row {
-	height: 90%;
-}
-
-.col {
-	height: 90%;
+	max-height: 90%;
 }
 
 #lesson {
-	height: 100%;
-	padding-right: 0px;
-	padding-left: 0px;
+	overflow-y: scroll;
 }
 
 #query {
@@ -22,8 +17,9 @@ body, html, #content {
 }
 
 #results {
-	overflow-y:scroll;
-	height: 80%;
+	padding-top: 5px;
+	overflow-y: scroll;
+	max-height: 75%;
 }
 
 iframe {
