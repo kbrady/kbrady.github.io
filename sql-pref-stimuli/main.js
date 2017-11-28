@@ -124,8 +124,26 @@ function buildTable(result) {
 
 // make the quiz form half the width of the screen
 function setFormDim() {
+  console.log('testing1');
+  // show feedback
+  // moveToScore();
   // get the iframe
   var quiz = document.getElementById("quiz");
-  quiz.width = (screen.width * .42);
-  quiz.height = (screen.height - 48);
+  quiz.width = (window.innerWidth * .48);
+  quiz.height = (window.innerHeight - 48);
+}
+
+// show student scores
+function moveToScore() {
+  console.log('testing');
+  var quiz_frame = document.getElementById("quiz");
+  var quiz_document = quiz_frame.contentDocument;
+  var feedback_links = 
+    Array.from(document.getElementsByTagName('a'))
+      .filter(
+        function(e) { return e.textContent == 'View your score'; });
+  console.log(feedback_links);
+  if (feedback_links.length == 1) {
+    quiz_frame.src = feedback_links[0].href;
+  }
 }

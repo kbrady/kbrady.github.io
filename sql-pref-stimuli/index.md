@@ -43,7 +43,7 @@ id | maximum_shock | age | experimenter
 SQL databases are used around the world for everything from tracking credit card transactions to storing medical records. They can be used at a small scale for storing the data in psychological studies, as we will discuss here, and at a massive scale to store and retrieve posts on social networks.
 
 <div class="container">
-	<a href="/sql-pref-stimuli/quiz-1.html">
+	<a href="/sql-pref-stimuli/quiz-0.html">
 		<button class="btn btn-success">Section Quiz</button>
 	</a>
 </div>
