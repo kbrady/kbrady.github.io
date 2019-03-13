@@ -2,3 +2,4 @@
 *.csv
 _site/
 Gemfile*
+.DS_Store

@@ -33,7 +33,10 @@ Now suppose we want to know the minimum shock that was administered by anyone in
 Note that we switched out `id` for `maximum_shock` as the column in the `MIN` function since we want to take the minimum of the maximum shock not the participant id.
 
 <div class="container">
-	<a href="/sql-pref-stimuli/quiz-3.html">
-		<button class="btn btn-success">Final Quiz</button>
+	<a href="/sql-pref-stimuli/instructions-2.html">
+		<button class="btn btn-secondary">Back</button>
+	</a>
+	<a href="/">
+		<button class="btn btn-dark">Back to Main Page</button>
 	</a>
 </div>

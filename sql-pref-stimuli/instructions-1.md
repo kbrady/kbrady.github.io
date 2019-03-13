@@ -84,7 +84,10 @@ Other functions you might find useful are `COUNT`, which counts the number of ro
 We will use `COUNT` later in this lesson to answer some questions about the data. In the next section we will discuss how to select a subset of the data.
 
 <div class="container">
-	<a href="quiz-1.html">
-		<button class="btn btn-success">Section Quiz</button>
+	<a href="/2018/11/28/An-Introduction-to-SQL.html">
+		<button class="btn btn-secondary">Back</button>
+	</a>
+	<a href="/sql-pref-stimuli/instructions-2.html">
+		<button class="btn btn-success">Next Section</button>
 	</a>
 </div>

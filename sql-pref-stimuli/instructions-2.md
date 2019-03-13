@@ -38,7 +38,10 @@ In the next section we will discuss how to combine the functions we learned abou
 
 
 <div class="container">
-	<a href="instructions-3.html">
+	<a href="/sql-pref-stimuli/instructions-1.html">
+		<button class="btn btn-secondary">Back</button>
+	</a>
+	<a href="/sql-pref-stimuli/instructions-3.html">
 		<button class="btn btn-success">Next Section</button>
 	</a>
 </div>
