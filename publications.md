@@ -6,6 +6,8 @@ permalink: /publications/
 
 [Brady, K. A. (2019). TESS: A tool for optically measuring digital reading interactions from screen recordings. Vanderbilt University.](/publications/brady_dissertation.pdf)
 
+[Goodwin, A. P., Cho, S.-J., Reynolds, D., Brady, K., & Salas, J. (2019). Digital Versus Paper Reading Processes and Links to Comprehension for Middle School Students. *American Educational Research Journal*](/publications/AERJ_2019.pdf)
+
 [Brady, K., Cho, S. J., Narasimham, G., Fisher, D., & Goodwin, A. (2018). Is Scrolling Disrupting While Reading? *In Proceedings of the 13th International Conference of the Learning Sciences.*](/publications/ICLS_2018.pdf)
 
 [Brady, K., Narasimham, G., & Fisher, D. (2018). Who Downloads Online Content and Why? *In Proceedings of the Fifth Annual ACM Conference on Learning at Scale*](/publications/L@S_2018_Bandwidth_Study_WiP.pdf)
