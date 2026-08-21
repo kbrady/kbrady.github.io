@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish Cloze Test</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+    <div id="main-content">
+        <h1>Turkish Cloze Test Generator</h1>
+        
+        <div id="setup-view">
+            <p>Paste your Turkish text below:</p>
+            <textarea id="input-text" placeholder="Enter Turkish text here..."></textarea>
+            <br>
+            <button onclick="startTest()">Generate & Start Test</button>
+        </div>
+
+        <div id="test-view" class="hidden">
+            <div id="questions-container"></div>
+            <div id="score-board" class="hidden"><p></p><button
+onclick="resetTest()">Play Again</button></div>
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <p id="dict-content">Click a word in an answered sentence to see its Wiktionary definition here.</p>
+    </div>
+
+</body>
+</html>
