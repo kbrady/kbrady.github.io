@@ -178,8 +178,12 @@ async function fetchWiktionary(word) {
     sidebarContent.innerHTML = `Searching for <b>${word}</b>...`;
     
     try {
-        sidebarContent.innerHTML = `
+        /* sidebarContent.innerHTML = `
             <iframe src="https://www.wiktionary.org/wiki/${encodeURIComponent(word.toLowerCase())}#Turkish" title="Embedded Page"></iframe>
+        `;
+       */
+        sidebarContent.innerHTML = `
+            <iframe src="https://translate.google.com/?sl=tr&tl=en&op=translate&text=${encodeURIComponent(word.toLowerCase())}" title="Embedded Page"></iframe>
         `;
     } catch (error) {
         sidebarContent.innerHTML = `<p>No definition found for <b>${word}</b>.</p>
