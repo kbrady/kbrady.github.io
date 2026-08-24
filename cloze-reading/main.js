@@ -33,6 +33,9 @@ function startTest() {
         let options = new Set([targetWord]);
         while(options.size < 5) {
             const randomDistractor = allWordsPool[Math.floor(Math.random() * allWordsPool.length)];
+            if(randomDistractor.equals(targetWord)) {
+                continue;
+            }
             options.add(randomDistractor);
         }
         
@@ -70,8 +73,9 @@ function renderQuestions() {
         
         html += `<div class="options" id="options-${index}">`;
         q.options.forEach((opt, i) => {
+            const lowerOpt = opt.toLocaleLowerCase('tr');
             html += `<div class="option" onclick="handleAnswer(${index}, '${opt}')">
-                        <b>${i + 1}.</b> ${opt}
+                        <b>${i + 1}.</b> ${lowerOpt}
                      </div>`;
         });
         html += `</div>`;
