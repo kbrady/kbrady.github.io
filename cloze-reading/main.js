@@ -12,7 +12,8 @@ function startTest() {
 
     // Basic sentence splitting (naive approach using punctuation)
     const sentenceStrings = rawText.match(/[^.!?]+[.!?]*/g) || [rawText];
-    allWordsPool = Array.from(rawText.match(wordRegex) || []).map(m => m.toLowerCase());
+    allWordsPool = Array.from(rawText.match(wordRegex) || []).map(m =>
+m.toLowerCase('tr'));
     
     if (allWordsPool.length < 5) return alert("Text is too short to generate 5 options. Please provide more text.");
 
@@ -33,7 +34,7 @@ function startTest() {
         let options = new Set([targetWord]);
         while(options.size < 5) {
             const randomDistractor = allWordsPool[Math.floor(Math.random() * allWordsPool.length)];
-            if(randomDistractor.equals(targetWord)) {
+            if(randomDistractor == targetWord[0].toLowerCase('tr')) {
                 continue;
             }
             options.add(randomDistractor);
@@ -73,7 +74,7 @@ function renderQuestions() {
         
         html += `<div class="options" id="options-${index}">`;
         q.options.forEach((opt, i) => {
-            const lowerOpt = opt.toLocaleLowerCase('tr');
+            const lowerOpt = opt[0].toLocaleLowerCase('tr');
             html += `<div class="option" onclick="handleAnswer(${index}, '${opt}')">
                         <b>${i + 1}.</b> ${lowerOpt}
                      </div>`;
@@ -183,10 +184,12 @@ async function fetchWiktionary(word) {
     
     try {
         sidebarContent.innerHTML = `
-            <iframe src="https://www.wiktionary.org/wiki/${encodeURIComponent(word.toLowerCase())}#Turkish" title="Embedded Page"></iframe>
+            <iframe
+src="https://www.wiktionary.org/wiki/${encodeURIComponent(word.toLowerCase('tr'))}#Turkish" title="Embedded Page"></iframe>
         `;
     } catch (error) {
         sidebarContent.innerHTML = `<p>No definition found for <b>${word}</b>.</p>
-        <a href="https://www.wiktionary.org/wiki/${encodeURIComponent(word.toLowerCase())}" target="_blank">Search manually on Wiktionary</a>`;
+        <a
+href="https://www.wiktionary.org/wiki/${encodeURIComponent(word.toLowerCase('tr'))}" target="_blank">Search manually on Wiktionary</a>`;
     }
 }
