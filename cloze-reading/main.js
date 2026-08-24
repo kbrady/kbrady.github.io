@@ -4,7 +4,7 @@ let score = 0;
 let allWordsPool = [];
 
 // Turkish alphabet regex including special characters
-const wordRegex = /[a-zA-ZğüşıöçĞÜŞİÖÇ]+/g;
+const wordRegex = /[a-zA-ZğüşıöçĞÜŞİÖÇâ]+/g;
 
 function startTest() {
     const rawText = document.getElementById('input-text').value.trim();
@@ -74,7 +74,7 @@ function renderQuestions() {
         
         html += `<div class="options" id="options-${index}">`;
         q.options.forEach((opt, i) => {
-            const lowerOpt = opt[0].toLocaleLowerCase('tr');
+            const lowerOpt = opt.toString().toLocaleLowerCase('tr');
             html += `<div class="option" onclick="handleAnswer(${index}, '${opt}')">
                         <b>${i + 1}.</b> ${lowerOpt}
                      </div>`;
