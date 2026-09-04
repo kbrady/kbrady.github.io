@@ -4,7 +4,7 @@ let score = 0;
 let allWordsPool = [];
 
 // Turkish alphabet regex including special characters
-const wordRegex = /[a-zA-ZğüşıöçĞÜŞİÖÇâ]+/g;
+const wordRegex = /[a-zA-ZğüşıöçĞÜŞİÖÇâÂî']+/g;
 
 function startTest() {
     const rawText = document.getElementById('input-text').value.trim();
@@ -13,7 +13,7 @@ function startTest() {
     // Basic sentence splitting (naive approach using punctuation)
     const sentenceStrings = rawText.match(/[^.!?]+[.!?]*/g) || [rawText];
     allWordsPool = Array.from(rawText.match(wordRegex) || []).map(m =>
-m.toLowerCase('tr'));
+m.toLowerCase('tr')).filter(m => m.length > 1);
     
     if (allWordsPool.length < 5) return alert("Text is too short to generate 5 options. Please provide more text.");
 
@@ -191,5 +191,31 @@ src="https://www.wiktionary.org/wiki/${encodeURIComponent(word.toLowerCase('tr')
         sidebarContent.innerHTML = `<p>No definition found for <b>${word}</b>.</p>
         <a
 href="https://www.wiktionary.org/wiki/${encodeURIComponent(word.toLowerCase('tr'))}" target="_blank">Search manually on Wiktionary</a>`;
+    }
+}
+
+// fetch random example file path
+function getExampleFilePath() {
+    const exampleFiles = ['Ahî-Evran.txt', 'Ahriyan.txt', 'Cadılık.txt',
+'karagoz-ve-hacivat.txt', 'Köroğlu-Destanı.txt', 'nasreddin-hoca.txt',
+'yunus-emre.txt'];
+    const randomIndex = Math.floor(Math.random() * exampleFiles.length);
+    return 'examples/'+exampleFiles[randomIndex];
+}
+
+// fetch text from example
+async function populateFromExample() {
+    try {
+        // Replace with your file's relative or absolute URL
+        const response = await fetch(getExampleFilePath()); 
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const textData = await response.text();
+        document.getElementById('input-text').value = textData;
+    } catch (error) {
+        console.error("Failed to read the file:", error);
     }
 }
