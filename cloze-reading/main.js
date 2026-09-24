@@ -196,11 +196,9 @@ href="https://www.wiktionary.org/wiki/${encodeURIComponent(word.toLowerCase('tr'
 
 // fetch random example file path
 function getExampleFilePath() {
-    const exampleFiles = ['Ahî-Evran.txt', 'Ahriyan.txt', 'Cadılık.txt',
-'karagoz-ve-hacivat.txt', 'Köroğlu-Destanı.txt', 'nasreddin-hoca.txt',
-'yunus-emre.txt'];
+    const exampleFiles = ['cesur-kiz.txt', 'karga.txt', 'pamuk-prenses.txt'];
     const randomIndex = Math.floor(Math.random() * exampleFiles.length);
-    return 'examples/'+exampleFiles[randomIndex];
+    return 'masal/'+exampleFiles[randomIndex];
 }
 
 // fetch text from example
