@@ -75,7 +75,9 @@ function renderQuestions() {
         html += `<div class="options" id="options-${index}">`;
         q.options.forEach((opt, i) => {
             const lowerOpt = opt.toString().toLocaleLowerCase('tr');
-            html += `<div class="option" onclick="handleAnswer(${index}, '${opt}')">
+            const safeOpt = opt.toString().replace(/'/g, "\\'");
+            html += `<div class="option" onclick="handleAnswer(${index},
+'${safeOpt}')">
                         <b>${i + 1}.</b> ${lowerOpt}
                      </div>`;
         });
